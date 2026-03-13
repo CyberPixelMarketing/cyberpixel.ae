@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Pixel - Digital Excellence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cairo:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FFD700;
+            --primary-dark: #B8860B;
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+            --bg-card: #111111;
+            --text-light: #ffffff;
+            --text-muted: #888888;
+            --text-dim: #555555;
+            --accent-glow: rgba(255, 215, 0, 0.3);
+            --gradient-gold: linear-gradient(135deg, #FFD700, #FFA500, #FFD700);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            box-shadow: 0 4px 30px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            animation: pulse-green 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.15) rotate(15deg);
+            box-shadow: 0 8px 40px rgba(37, 211, 102, 0.7);
+        }
+
+        @keyframes pulse-green {
+            0%, 100% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.5); }
+            50% { box-shadow: 0 4px 50px rgba(37, 211, 102, 0.8); }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 15px 5%;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 2px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+        }
+
+        /* RTL Support */
+        body.rtl {
+            direction: rtl;
+            text-align: right;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body.rtl h1,
+        body.rtl h2,
+        body.rtl h3,
+        body.rtl h4,
+        body.rtl .hero-badge,
+        body.rtl .btn,
+        body.rtl .service-card,
+        body.rtl .portfolio-content,
+        body.rtl .contact-info,
+        body.rtl .contact-form,
+        body.rtl .stat-label,
+        body.rtl .trusted-logo,
+        body.rtl .nav-links a,
+        body.rtl .portfolio-tab,
+        body.rtl .footer-text {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body.rtl .nav-links {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .logo-container {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .hero-content,
+        body.rtl .section-header,
+        body.rtl .service-card,
+        body.rtl .contact-info,
+        body.rtl .portfolio-content {
+            text-align: right;
+        }
+
+        body.rtl .service-number {
+            right: auto;
+            left: 30px;
+        }
+
+        body.rtl .contact-item {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .contact-item-text {
+            text-align: right;
+        }
+
+        body.rtl .portfolio-links {
+            justify-content: flex-start;
+        }
+
+        body.rtl .footer-content {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .footer-logo-container {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .whatsapp-float {
+            right: auto;
+            left: 30px;
+        }
+
+        body.rtl .form-group {
+            text-align: right;
+        }
+
+        body.rtl .form-group input,
+        body.rtl .form-group textarea,
+        body.rtl .form-group select {
+            text-align: right;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body.rtl .submit-btn {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .btn {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .portfolio-link {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .stat-item {
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            body.rtl .whatsapp-float {
+                left: 20px;
+                right: auto;
+            }
+
+            body.rtl .nav-links {
+                flex-direction: column;
+            }
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 100px 5%;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(255, 165, 0, 0.05) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 80%, rgba(255, 215, 0, 0.03) 0%, transparent 60%);
+            z-index: 0;
+        }
+
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            animation: grid-move 20s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(80px, 80px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            max-width: 1000px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 10px 25px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero h1 span {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+            opacity: 0;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-gold);
+            color: var(--bg-dark);
+            box-shadow: 0 5px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            width: 100px;
+            height: 100px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            top: 70%;
+            left: 5%;
+            animation-delay: 1s;
+        }
+
+        .shape-3 {
+            width: 80px;
+            height: 80px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 20%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape-4 {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            bottom: 20%;
+            right: 15%;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        .section {
+            padding: 120px 5%;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 span {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 50px 40px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 215, 0, 0.3);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.05));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: var(--gradient-gold);
+            color: var(--bg-dark);
+        }
+
+        .service-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .service-number {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.03);
+            line-height: 1;
+        }
+
+        .stats-section {
+            background: linear-gradient(180deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+            padding: 100px 5%;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .stat-item:hover {
+            background: rgba(255, 215, 0, 0.05);
+            border-color: rgba(255, 215, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .portfolio-section {
+            background: var(--bg-darker);
+        }
+
+        .portfolio-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-tab {
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            color: var(--text-muted);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-tab:hover,
+        .portfolio-tab.active {
+            background: var(--gradient-gold);
+            color: var(--bg-dark);
+            border-color: var(--primary);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .portfolio-grid.apps-grid {
+            display: grid;
+        }
+
+        .portfolio-grid.websites-grid {
+            display: none;
+        }
+
+        .portfolio-grid.show {
+            display: grid;
+        }
+
+        .portfolio-grid.hide {
+            display: none;
+        }
+
+        .portfolio-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(255, 215, 0, 0.3);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .portfolio-image {
+            height: 350px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-card:hover .portfolio-image img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .portfolio-card:hover .portfolio-image::after {
+            left: 100%;
+        }
+
+        .portfolio-content {
+            padding: 25px;
+        }
+
+        .portfolio-content h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-content p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            padding: 8px 15px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-link:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+        }
+
+        .trusted-section {
+            padding: 80px 5%;
+            background: var(--bg-dark);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .trusted-section h3 {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 50px;
+        }
+
+        .trusted-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .trusted-logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .trusted-logo:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        .contact-section {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .contact-item-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .contact-item-text h4 {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .contact-item-text a,
+        .contact-item-text p {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item-text a:hover {
+            color: var(--primary);
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--text-light);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 215, 0, 0.05);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-group select option {
+            background: var(--bg-dark);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--gradient-gold);
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            display: block;
+            background: rgba(37, 211, 102, 0.1);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            color: #25D366;
+        }
+
+        .form-message.error {
+            display: block;
+            background: rgba(255, 77, 77, 0.1);
+            border: 1px solid rgba(255, 77, 77, 0.3);
+            color: #ff4d4d;
+        }
+
+        footer {
+            background: var(--bg-darker);
+            padding: 60px 5% 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-logo {
+            height: 40px;
+        }
+
+        .footer-logo-text {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-text {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+            transform: translateY(-5px);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(10, 10, 10, 0.98);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                transition: right 0.5s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .stat-number {
+                font-size: 3rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-image {
+                height: 280px;
+            }
+
+            .contact-form {
+                padding: 30px;
+            }
+
+            .trusted-logos {
+                gap: 30px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .section {
+                padding: 80px 5%;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .service-card {
+                padding: 30px 25px;
+            }
+
+            .stat-item {
+                padding: 25px 15px;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            .portfolio-tabs {
+                gap: 10px;
+            }
+
+            .portfolio-tab {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .logo-text {
+                display: none;
+            }
+        }
+
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-darker);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(255, 215, 0, 0.1);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/971555669771" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo-container">
+            <img src="Cyber_Pixel_Logo-removebg-preview.png" alt="Cyber Pixel" class="logo">
+            <span class="logo-text">Cyber Pixel</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
+            <li><a href="#services" data-en="Services" data-ar="خدماتنا">Services</a></li>
+            <li><a href="#portfolio" data-en="Portfolio" data-ar="أعمالنا">Portfolio</a></li>
+            <li><a href="#contact" data-en="Contact" data-ar="تواصل معنا">Contact</a></li>
+            <li><button class="lang-toggle" id="langToggle">العربية</button></li>
+        </ul>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+        <div class="hero-content">
+            <span class="hero-badge" data-en="Digital Excellence Since 2015" data-ar="التميز الرقمي منذ 2015">Digital Excellence Since 2015</span>
+            <h1 data-en="Transform Your Ideas Into" data-ar="حوّل أفكارك إلى مشاريع">Transform Your Ideas Into <span data-en="Powerful Digital Experiences" data-ar="رقمية قوية">Powerful Digital Experiences</span></h1>
+            <p data-en="UAE-based software development company specializing in mobile apps, e-commerce websites, digital marketing, and AI solutions." data-ar="شركة تطوير برمجيات مقرها الإمارات متخصصة في تطبيقات الجوال، مواقع التجارة الإلكترونية، التسويق الرقمي، وحلول الذكاء الاصطناعي.">UAE-based software development company specializing in mobile apps, e-commerce websites, digital marketing, and AI solutions.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    <span data-en="Request a Quotation" data-ar="طلب عرض سعر">Request a Quotation</span>
+                </a>
+                <a href="#portfolio" class="btn btn-secondary">
+                    <i class="fas fa-eye"></i>
+                    <span data-en="View Our Work" data-ar="شاهد أعمالنا">View Our Work</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="section-header reveal">
+            <h2><span data-en="Our" data-ar="خدماتنا">Our</span> <span data-en="Services" data-ar="">Services</span></h2>
+            <p data-en="Comprehensive digital solutions tailored to elevate your business" data-ar="حلول رقمية شاملة مصممة لرفع مستوى أعمالك">Comprehensive digital solutions tailored to elevate your business</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <span class="service-number">01</span>
+                <div class="service-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3 data-en="Mobile App Development" data-ar="تطوير تطبيقات الجوال">Mobile App Development</h3>
+                <p data-en="Custom Android & iOS apps designed to fit your business needs with rapid delivery timelines. Get your app within 15 days." data-ar="تطبيقات أندرويد وآيفون مخصصة مصممة لتناسب احتياجات عملك مع جداول تسليم سريعة. احصل على تطبيقك خلال 15 يوماً.">Custom Android & iOS apps designed to fit your business needs with rapid delivery timelines. Get your app within 15 days.</p>
+            </div>
+            <div class="service-card reveal">
+                <span class="service-number">02</span>
+                <div class="service-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3 data-en="E-Commerce Development" data-ar="تطوير التجارة الإلكترونية">E-Commerce Development</h3>
+                <p data-en="Responsive e-commerce websites and mobile commerce apps built on Shopify or custom frameworks with secure payment integration." data-ar="مواقع تجارة إلكترونية متجاوبة وتطبيقات تجارة الجوال مبنية على شوبيفاي أو أطر عمل مخصصة مع تكامل دفع آمن.">Responsive e-commerce websites and mobile commerce apps built on Shopify or custom frameworks with secure payment integration.</p>
+            </div>
+            <div class="service-card reveal">
+                <span class="service-number">03</span>
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 data-en="Ads Management" data-ar="إدارة الإعلانات">Ads Management</h3>
+                <p data-en="Campaigns that deliver clear ROI through SEO, pay-per-click advertising, social media marketing, and data analytics." data-ar="حملات تحقق عائد استثمار واضح من خلال تحسين محركات البحث، إعلانات الدفع لكل نقرة، التسويق عبر وسائل التواصل الاجتماعي، وتحليل البيانات.">Campaigns that deliver clear ROI through SEO, pay-per-click advertising, social media marketing, and data analytics.</p>
+            </div>
+            <div class="service-card reveal">
+                <span class="service-number">04</span>
+                <div class="service-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3 data-en="AI Solutions" data-ar="حلول الذكاء الاصطناعي">AI Solutions</h3>
+                <p data-en="Our automated upselling system manages itself entirely, handling all the upselling for you and bringing in more revenue automatically." data-ar="نظام البيع التصاعدي الآلي يدير نفسه بالكامل، يتولى جميع عمليات البيع الإضافية ويجلب المزيد من الإيرادات تلقائياً.">Our automated upselling system manages itself entirely, handling all the upselling for you and bringing in more revenue automatically.</p>
+            </div>
+            <div class="service-card reveal">
+                <span class="service-number">05</span>
+                <div class="service-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3 data-en="WhatsApp Automation" data-ar="أتمتة الواتساب">WhatsApp Automation</h3>
+                <p data-en="AI-powered WhatsApp automation tools offering bulk messaging and AI auto-reply capabilities through our Watsin platform." data-ar="أدوات أتمتة واتساب مدعومة بالذكاء الاصطناعي تقدم رسائل جماعية وقدرات الرد التلقائي عبر منصة واتسن.">AI-powered WhatsApp automation tools offering bulk messaging and AI auto-reply capabilities through our Watsin platform.</p>
+            </div>
+            <div class="service-card reveal">
+                <span class="service-number">06</span>
+                <div class="service-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3 data-en="24/7 Support" data-ar="دعم على مدار الساعة">24/7 Support</h3>
+                <p data-en="Round-the-clock hosting provider chat support ensuring your digital presence remains stable and secure at all times." data-ar="دعم محادثة مزود الاستضافة على مدار الساعة يضمن بقاء حضورك الرقمي مستقراً وآمناً في جميع الأوقات.">Round-the-clock hosting provider chat support ensuring your digital presence remains stable and secure at all times.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item reveal">
+                <div class="stat-number">100%</div>
+                <div class="stat-label" data-en="UAE Developed" data-ar="تطوير إماراتي">UAE Developed</div>
+            </div>
+            <div class="stat-item reveal">
+                <div class="stat-number">15</div>
+                <div class="stat-label" data-en="Days Delivery" data-ar="يوم للتسليم">Days Delivery</div>
+            </div>
+            <div class="stat-item reveal">
+                <div class="stat-number">50+</div>
+                <div class="stat-label" data-en="Happy Clients" data-ar="عميل سعيد">Happy Clients</div>
+            </div>
+            <div class="stat-item reveal">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label" data-en="Support" data-ar="دعم فني">Support</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section portfolio-section" id="portfolio">
+        <div class="section-header reveal">
+            <h2><span data-en="Our" data-ar="أعمالنا">Our</span> <span data-en="Work" data-ar="">Work</span></h2>
+            <p data-en="Trusted by businesses across the UAE and GCC region" data-ar="موثوق به من قبل الشركات في الإمارات ومنطقة الخليج">Trusted by businesses across the UAE and GCC region</p>
+        </div>
+
+        <!-- Portfolio Tabs -->
+        <div class="portfolio-tabs reveal">
+            <div class="portfolio-tab active" data-tab="apps" data-en="Mobile Apps" data-ar="تطبيقات الجوال">Mobile Apps</div>
+            <div class="portfolio-tab" data-tab="websites" data-en="Websites" data-ar="المواقع الإلكترونية">Websites</div>
+        </div>
+
+        <!-- Mobile Apps Grid -->
+        <div class="portfolio-grid apps-grid show" id="apps-grid">
+            <!-- ALHOR APP -->
+            <div class="portfolio-card reveal">
+                <div class="portfolio-image">
+                    <img src="https://cyberpixel.sa/cdn/shop/files/alhor.png?v=1765373857" alt="ALHOR APP">
+                </div>
+                <div class="portfolio-content">
+                    <h3>ALHOR APP</h3>
+                    <p data-en="Mobile Application" data-ar="تطبيق جوال">Mobile Application</p>
+                    <div class="portfolio-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.halfmad.alhor.app" target="_blank" class="portfolio-link">
+                            <i class="fab fa-google-play"></i> Play Store
+                        </a>
+                        <a href="https://apps.apple.com/gb/app/alhor/id1664758845" target="_blank" class="portfolio-link">
+                            <i class="fab fa-apple"></i> App Store
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phone7m -->
+            <div class="portfolio-card reveal">
+                <div class="portfolio-image">
+                    <img src="https://cyberpixel.sa/cdn/shop/files/Phone7m.webp?v=1765373863" alt="Phone7m">
+                </div>
+                <div class="portfolio-content">
+                    <h3>Phone7m</h3>
+                    <p data-en="Mobile Application" data-ar="تطبيق جوال">Mobile Application</p>
+                    <div class="portfolio-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.codingeagle.phone7m" target="_blank" class="portfolio-link">
+                            <i class="fab fa-google-play"></i> Play Store
+                        </a>
+                        <a href="https://apps.apple.com/us/app/phone7m-find-excellence/id6504747136" target="_blank" class="portfolio-link">
+                            <i class="fab fa-apple"></i> App Store
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tech Verge -->
+            <div class="portfolio-card reveal">
+                <div class="portfolio-image">
+                    <img src="https://cyberpixel.sa/cdn/shop/files/Tech_verge.webp?v=1765373856" alt="Tech Verge">
+                </div>
+                <div class="portfolio-content">
+                    <h3>Tech Verge</h3>
+                    <p data-en="Mobile Application" data-ar="تطبيق جوال">Mobile Application</p>
+                    <div class="portfolio-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.codingeagle.techVerge&hl=en" target="_blank" class="portfolio-link">
+                            <i class="fab fa-google-play"></i> Play Store
+                        </a>
+                        <a href="https://apps.apple.com/ph/app/techverge/id6520393543" target="_blank" class="portfolio-link">
+                            <i class="fab fa-apple"></i> App Store
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Websites Grid -->
+        <div class="portfolio-grid websites-grid" id="websites-grid">
+            <!-- Cathydoll -->
+            <div class="portfolio-card reveal">
+                <div class="portfolio-image">
+                    <img src="https://cyberpixel.sa/cdn/shop/files/Cathydoll.webp?v=1765373849" alt="Cathydoll">
+                </div>
+                <div class="portfolio-content">
+                    <h3>Cathydoll</h3>
+                    <p data-en="E-Commerce Website" data-ar="موقع تجارة إلكترونية">E-Commerce Website</p>
+                    <div class="portfolio-links">
+                        <a href="https://cathydoll.me/" target="_blank" class="portfolio-link">
+                            <i class="fas fa-globe"></i> <span data-en="Visit Website" data-ar="زيارة الموقع">Visit Website</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ajwaa Perfumes -->
+            <div class="portfolio-card reveal">
+                <div class="portfolio-image">
+                    <img src="https://cyberpixel.sa/cdn/shop/files/Ajwaa.webp?v=1765373835" alt="Ajwaa Perfumes">
+                </div>
+                <div class="portfolio-content">
+                    <h3 data-en="Ajwaa Perfumes" data-ar="عجوة للعطور">Ajwaa Perfumes</h3>
+                    <p data-en="E-Commerce Website" data-ar="موقع تجارة إلكترونية">E-Commerce Website</p>
+                    <div class="portfolio-links">
+                        <a href="https://ajwaaperfumes.com/" target="_blank" class="portfolio-link">
+                            <i class="fas fa-globe"></i> <span data-en="Visit Website" data-ar="زيارة الموقع">Visit Website</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tamr wa Qahwa -->
+            <div class="portfolio-card reveal">
+                <div class="portfolio-image">
+                    <img src="https://cyberpixel.sa/cdn/shop/files/Tamrq.webp?v=1765373837" alt="Tamr wa Qahwa">
+                </div>
+                <div class="portfolio-content">
+                    <h3 data-en="Tamr wa Qahwa" data-ar="تمر وقهوة">Tamr wa Qahwa</h3>
+                    <p data-en="E-Commerce Website" data-ar="موقع تجارة إلكترونية">E-Commerce Website</p>
+                    <div class="portfolio-links">
+                        <a href="https://tamrq.ae/" target="_blank" class="portfolio-link">
+                            <i class="fas fa-globe"></i> <span data-en="Visit Website" data-ar="زيارة الموقع">Visit Website</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SK Cosmetics -->
+            <div class="portfolio-card reveal">
+                <div class="portfolio-image">
+                    <img src="https://cyberpixel.sa/cdn/shop/files/SkCosmetics_2ee320cd-07cd-4153-a981-6e7d3b25ca1c.webp?v=1765373858" alt="SK Cosmetics">
+                </div>
+                <div class="portfolio-content">
+                    <h3>SK Cosmetics</h3>
+                    <p data-en="E-Commerce Website" data-ar="موقع تجارة إلكترونية">E-Commerce Website</p>
+                    <div class="portfolio-links">
+                        <a href="https://skcosmetics.me/" target="_blank" class="portfolio-link">
+                            <i class="fas fa-globe"></i> <span data-en="Visit Website" data-ar="زيارة الموقع">Visit Website</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mohamad Oud -->
+            <div class="portfolio-card reveal">
+                <div class="portfolio-image">
+                    <img src="https://cyberpixel.sa/cdn/shop/files/Mohammad_Oud.webp?v=1765373844" alt="Mohamad Oud">
+                </div>
+                <div class="portfolio-content">
+                    <h3 data-en="Mohamad Oud" data-ar="محمد عود">Mohamad Oud</h3>
+                    <p data-en="E-Commerce Website" data-ar="موقع تجارة إلكترونية">E-Commerce Website</p>
+                    <div class="portfolio-links">
+                        <a href="https://mohammedoud.ae/" target="_blank" class="portfolio-link">
+                            <i class="fas fa-globe"></i> <span data-en="Visit Website" data-ar="زيارة الموقع">Visit Website</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KinStore -->
+            <div class="portfolio-card reveal">
+                <div class="portfolio-image">
+                    <img src="https://cyberpixel.sa/cdn/shop/files/Kinstore.webp?v=1765373841" alt="KinStore">
+                </div>
+                <div class="portfolio-content">
+                    <h3>KinStore</h3>
+                    <p data-en="E-Commerce Website" data-ar="موقع تجارة إلكترونية">E-Commerce Website</p>
+                    <div class="portfolio-links">
+                        <a href="https://kinstore.ae/" target="_blank" class="portfolio-link">
+                            <i class="fas fa-globe"></i> <span data-en="Visit Website" data-ar="زيارة الموقع">Visit Website</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kayan -->
+            <div class="portfolio-card reveal">
+                <div class="portfolio-image">
+                    <img src="https://cyberpixel.sa/cdn/shop/files/Kayan.webp?v=1765373842" alt="Kayan">
+                </div>
+                <div class="portfolio-content">
+                    <h3 data-en="Kayan" data-ar="كيان">Kayan</h3>
+                    <p data-en="E-Commerce Website" data-ar="موقع تجارة إلكترونية">E-Commerce Website</p>
+                    <div class="portfolio-links">
+                        <a href="https://kayan.ae/" target="_blank" class="portfolio-link">
+                            <i class="fas fa-globe"></i> <span data-en="Visit Website" data-ar="زيارة الموقع">Visit Website</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diva Lady -->
+            <div class="portfolio-card reveal">
+                <div class="portfolio-image">
+                    <img src="https://cyberpixel.sa/cdn/shop/files/divalady.webp?v=1765373847" alt="Diva Lady">
+                </div>
+                <div class="portfolio-content">
+                    <h3>Diva Lady</h3>
+                    <p data-en="E-Commerce Website" data-ar="موقع تجارة إلكترونية">E-Commerce Website</p>
+                    <div class="portfolio-links">
+                        <a href="https://divalady.me/" target="_blank" class="portfolio-link">
+                            <i class="fas fa-globe"></i> <span data-en="Visit Website" data-ar="زيارة الموقع">Visit Website</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section class="trusted-section">
+        <h3 data-en="Trusted By Industry Leaders" data-ar="موثوق به من قادة الصناعة">Trusted By Industry Leaders</h3>
+        <div class="trusted-logos">
+            <span class="trusted-logo" data-en="Ministry of Interior" data-ar="وزارة الداخلية">Ministry of Interior</span>
+            <span class="trusted-logo" data-en="Shurooq Investment" data-ar="شروق للاستثمار">Shurooq Investment</span>
+            <span class="trusted-logo" data-en="Defacto Group" data-ar="مجموعة ديفاكتو">Defacto Group</span>
+            <span class="trusted-logo" data-en="Royal Meridien" data-ar="رويال ميريديان">Royal Meridien</span>
+            <span class="trusted-logo" data-en="Al Ahli Group" data-ar="مجموعة الأهلي">Al Ahli Group</span>
+            <span class="trusted-logo" data-en="Advance Catering" data-ar="أدفانس كاترينج">Advance Catering</span>
+            <span class="trusted-logo" data-en="Grand Outlet" data-ar="جراند أوتلت">Grand Outlet</span>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+        <div class="section-header reveal">
+            <h2><span data-en="Get In" data-ar="تواصل">Get In</span> <span data-en="Touch" data-ar="معنا">Touch</span></h2>
+            <p data-en="Let's discuss your next project and bring your vision to life" data-ar="دعنا نناقش مشروعك القادم ونحول رؤيتك إلى حقيقة">Let's discuss your next project and bring your vision to life</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info reveal">
+                <h3 data-en="Let's Build Something Amazing Together" data-ar="لنبني شيئاً مذهلاً معاً">Let's Build Something Amazing Together</h3>
+                <p data-en="Whether you need a mobile app, e-commerce website, or digital marketing strategy, our team is ready to help transform your ideas into reality." data-ar="سواء كنت بحاجة إلى تطبيق جوال أو موقع تجارة إلكترونية أو استراتيجية تسويق رقمي، فريقنا جاهز لمساعدتك في تحويل أفكارك إلى حقيقة.">Whether you need a mobile app, e-commerce website, or digital marketing strategy, our team is ready to help transform your ideas into reality.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4 data-en="Email Us" data-ar="راسلنا">Email Us</h4>
+                            <a href="mailto:info@cyberpixel.ae">info@cyberpixel.ae</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4 data-en="Call Us" data-ar="اتصل بنا">Call Us</h4>
+                            <a href="tel:+971555669771">+971 55 566 9771</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4 data-en="WhatsApp" data-ar="واتساب">WhatsApp</h4>
+                            <a href="https://wa.me/971555669771" target="_blank">+971 55 566 9771</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4 data-en="Visit Us" data-ar="زورنا">Visit Us</h4>
+                            <a href="https://share.google/bRNfQqOa51Zbwf74o" target="_blank" data-en="Business Bay, Dubai, UAE" data-ar="بزنس باي، دبي، الإمارات">Business Bay, Dubai, UAE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form reveal" id="quoteForm">
+                <input type="hidden" name="access_key" value="f1a19e60-e436-4d3a-91f5-542bbbc6b334">
+                <input type="hidden" name="subject" value="New Quotation Request - Cyber Pixel">
+                <input type="hidden" name="from_name" value="Cyber Pixel Website">
+                
+                <div class="form-group">
+                    <label for="name" data-en="Full Name" data-ar="الاسم الكامل">Full Name</label>
+                    <input type="text" id="name" name="name" required data-placeholder-en="John Doe" data-placeholder-ar="الاسم الكامل" placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="email" data-en="Email Address" data-ar="البريد الإلكتروني">Email Address</label>
+                    <input type="email" id="email" name="email" required data-placeholder-en="john@example.com" data-placeholder-ar="example@email.com" placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone" data-en="Phone Number" data-ar="رقم الهاتف">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required data-placeholder-en="+971 XX XXX XXXX" data-placeholder-ar="+971 XX XXX XXXX" placeholder="+971 XX XXX XXXX">
+                </div>
+                <div class="form-group">
+                    <label for="service" data-en="Service Required" data-ar="الخدمة المطلوبة">Service Required</label>
+                    <select id="service" name="service" required>
+                        <option value="" data-en="Select a service" data-ar="اختر خدمة">Select a service</option>
+                        <option value="Mobile App Development" data-en="Mobile App Development" data-ar="تطوير تطبيقات الجوال">Mobile App Development</option>
+                        <option value="E-Commerce Development" data-en="E-Commerce Development" data-ar="تطوير التجارة الإلكترونية">E-Commerce Development</option>
+                        <option value="Ads Management" data-en="Ads Management" data-ar="إدارة الإعلانات">Ads Management</option>
+                        <option value="AI Solutions" data-en="AI Solutions" data-ar="حلول الذكاء الاصطناعي">AI Solutions</option>
+                        <option value="WhatsApp Automation" data-en="WhatsApp Automation" data-ar="أتمتة الواتساب">WhatsApp Automation</option>
+                        <option value="Other" data-en="Other" data-ar="أخرى">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message" data-en="Project Details" data-ar="تفاصيل المشروع">Project Details</label>
+                    <textarea id="message" name="message" required data-placeholder-en="Tell us about your project..." data-placeholder-ar="أخبرنا عن مشروعك..." placeholder="Tell us about your project..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i>
+                    <span data-en="Send Quotation Request" data-ar="إرسال طلب عرض سعر">Send Quotation Request</span>
+                </button>
+                <div class="form-message" id="formMessage"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo-container">
+                <img src="Cyber_Pixel_Logo-removebg-preview.png" alt="Cyber Pixel" class="footer-logo">
+                <span class="footer-logo-text">Cyber Pixel</span>
+            </div>
+            <p class="footer-text" data-en="© 2026 Cyber Pixel. All rights reserved. | Digital Excellence Since 2015" data-ar="© 2026 سايبر بكسل. جميع الحقوق محفوظة. | التميز الرقمي منذ 2015">© 2026 Cyber Pixel. All rights reserved. | Digital Excellence Since 2015</p>
+            <div class="footer-social">
+                <a href="https://wa.me/971555669771" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:info@cyberpixel.ae" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://share.google/bRNfQqOa51Zbwf74o" target="_blank" aria-label="Location"><i class="fas fa-map-marker-alt"></i></a>
+                <a href="tel:+971555669771" aria-label="Phone"><i class="fas fa-phone"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page Loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.page-loader').classList.add('hidden');
+            }, 500);
+        });
+
+        // Navigation scroll effect
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Portfolio Tabs
+        const portfolioTabs = document.querySelectorAll('.portfolio-tab');
+        const appsGrid = document.getElementById('apps-grid');
+        const websitesGrid = document.getElementById('websites-grid');
+
+        portfolioTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                portfolioTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                const tabType = tab.dataset.tab;
+
+                if (tabType === 'apps') {
+                    appsGrid.classList.add('show');
+                    appsGrid.classList.remove('hide');
+                    websitesGrid.classList.add('hide');
+                    websitesGrid.classList.remove('show');
+                } else {
+                    websitesGrid.classList.add('show');
+                    websitesGrid.classList.remove('hide');
+                    appsGrid.classList.add('hide');
+                    appsGrid.classList.remove('show');
+                }
+
+                document.querySelectorAll('.portfolio-card').forEach(card => {
+                    card.classList.remove('active');
+                    setTimeout(() => {
+                        revealOnScroll();
+                    }, 100);
+                });
+            });
+        });
+
+        // Scroll reveal animation
+        const reveals = document.querySelectorAll('.reveal');
+
+        function revealOnScroll() {
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const revealPoint = 150;
+
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // Language Switching
+        const langToggle = document.getElementById('langToggle');
+        let currentLang = 'en';
+
+        langToggle.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            document.body.classList.toggle('rtl', currentLang === 'ar');
+            langToggle.textContent = currentLang === 'en' ? 'العربية' : 'English';
+
+            // Update all elements with data-en and data-ar attributes
+            document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+                const text = currentLang === 'en' ? el.dataset.en : el.dataset.ar;
+                if (text) {
+                    el.textContent = text;
+                }
+            });
+
+            // Update placeholders
+            document.querySelectorAll('[data-placeholder-en][data-placeholder-ar]').forEach(el => {
+                el.placeholder = currentLang === 'en' ? el.dataset.placeholderEn : el.dataset.placeholderAr;
+            });
+
+            // Update select options
+            document.querySelectorAll('select option[data-en][data-ar]').forEach(option => {
+                option.textContent = currentLang === 'en' ? option.dataset.en : option.dataset.ar;
+            });
+
+            // Store language preference
+            localStorage.setItem('cyberpixel-lang', currentLang);
+        });
+
+        // Load saved language preference
+        const savedLang = localStorage.getItem('cyberpixel-lang');
+        if (savedLang === 'ar') {
+            langToggle.click();
+        }
+
+        // Form submission handling with Web3Forms
+        const form = document.getElementById('quoteForm');
+        const formMessage = document.getElementById('formMessage');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    formMessage.className = 'form-message success';
+                    formMessage.textContent = '✓ Thank you! Your quotation request has been sent successfully. We will contact you shortly.';
+                    form.reset();
+                } else {
+                    throw new Error(result.message || 'Something went wrong');
+                }
+            } catch (error) {
+                formMessage.className = 'form-message error';
+                formMessage.textContent = '✗ Sorry, there was an error sending your message. Please try again or contact us directly via WhatsApp.';
+            }
+
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+
+            // Hide message after 8 seconds
+            setTimeout(() => {
+                formMessage.className = 'form-message';
+            }, 8000);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect for floating shapes
+        document.addEventListener('mousemove', (e) => {
+            const shapes = document.querySelectorAll('.shape');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 20;
+                shape.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
