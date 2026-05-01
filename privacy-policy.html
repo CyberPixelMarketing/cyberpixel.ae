@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Cyber Pixel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cairo:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FFD700;
+            --primary-dark: #B8860B;
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+            --bg-card: #111111;
+            --text-light: #ffffff;
+            --text-muted: #888888;
+            --text-dim: #555555;
+            --accent-glow: rgba(255, 215, 0, 0.3);
+            --gradient-gold: linear-gradient(135deg, #FFD700, #FFA500, #FFD700);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo {
+            height: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 20px;
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-back:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+        }
+
+        .lang-toggle {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+        }
+
+        /* RTL Support */
+        body.rtl {
+            direction: rtl;
+            text-align: right;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body.rtl .logo-container {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .nav-back {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .policy-section h2 i {
+            margin-right: 0;
+            margin-left: 12px;
+        }
+
+        .page-hero {
+            padding: 160px 5% 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse at 30% 50%, rgba(255, 215, 0, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 30%, rgba(255, 165, 0, 0.04) 0%, transparent 40%);
+            z-index: 0;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .page-hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .policy-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 5% 100px;
+        }
+
+        .toc {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            border-radius: 16px;
+            padding: 35px 40px;
+            margin-bottom: 60px;
+        }
+
+        .toc h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .toc ol {
+            padding-left: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 30px;
+        }
+
+        .toc ol li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .toc ol li a:hover {
+            color: var(--primary);
+        }
+
+        .policy-section {
+            margin-bottom: 50px;
+        }
+
+        .policy-section h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+            color: var(--text-light);
+        }
+
+        .policy-section h2 i {
+            color: var(--primary);
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+
+        .policy-section p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .policy-section ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .policy-section ul li {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 8px;
+            padding-left: 8px;
+        }
+
+        .policy-section ul li::marker {
+            color: var(--primary);
+        }
+
+        .policy-section a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .policy-section a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        .highlight-box {
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+
+        footer {
+            background: var(--bg-darker);
+            padding: 60px 5% 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-logo {
+            height: 40px;
+        }
+
+        .footer-logo-text {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-text {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+            transform: translateY(-5px);
+        }
+
+        body.rtl .footer-content {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .footer-logo-container {
+            flex-direction: row-reverse;
+        }
+
+        body.rtl .toc ol {
+            padding-right: 20px;
+            padding-left: 0;
+        }
+
+        body.rtl .policy-section ul {
+            padding-right: 20px;
+            padding-left: 0;
+        }
+
+        body.rtl .policy-section ul li {
+            padding-right: 8px;
+            padding-left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .toc ol {
+                grid-template-columns: 1fr;
+            }
+
+            .toc {
+                padding: 25px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            body.rtl .footer-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-hero {
+                padding: 140px 5% 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo-container">
+            <img src="Cyber_Pixel_Logo-removebg-preview.png" alt="Cyber Pixel" class="logo">
+            <span class="logo-text">Cyber Pixel</span>
+        </a>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <a href="index.html" class="nav-back">
+                <i class="fas fa-arrow-left"></i>
+                <span data-en="Back to Home" data-ar="العودة للرئيسية">Back to Home</span>
+            </a>
+            <button class="lang-toggle" id="langToggle">العربية</button>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="page-hero-content">
+            <span class="page-hero-badge" data-en="Legal Information" data-ar="المعلومات القانونية">Legal Information</span>
+            <h1 data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</h1>
+            <p data-en="Last updated: May 2026 — We are committed to protecting your personal information and your right to privacy." data-ar="آخر تحديث: مايو 2026 — نحن ملتزمون بحماية معلوماتك الشخصية وحقك في الخصوصية.">Last updated: May 2026 — We are committed to protecting your personal information and your right to privacy.</p>
+        </div>
+    </div>
+
+    <!-- Policy Content -->
+    <div class="policy-container">
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h3 data-en="Table of Contents" data-ar="جدول المحتويات">Table of Contents</h3>
+            <ol>
+                <li><a href="#information-collected" data-en="Information We Collect" data-ar="المعلومات التي نجمعها">Information We Collect</a></li>
+                <li><a href="#how-we-use" data-en="How We Use Your Information" data-ar="كيف نستخدم معلوماتك">How We Use Your Information</a></li>
+                <li><a href="#sharing" data-en="Information Sharing" data-ar="مشاركة المعلومات">Information Sharing</a></li>
+                <li><a href="#cookies" data-en="Cookies & Tracking" data-ar="ملفات تعريف الارتباط">Cookies & Tracking</a></li>
+                <li><a href="#security" data-en="Data Security" data-ar="أمان البيانات">Data Security</a></li>
+                <li><a href="#third-party" data-en="Third-Party Links" data-ar="روابط الطرف الثالث">Third-Party Links</a></li>
+                <li><a href="#your-rights" data-en="Your Rights" data-ar="حقوقك">Your Rights</a></li>
+                <li><a href="#children" data-en="Children's Privacy" data-ar="خصوصية الأطفال">Children's Privacy</a></li>
+                <li><a href="#changes" data-en="Policy Changes" data-ar="تغييرات السياسة">Policy Changes</a></li>
+                <li><a href="#contact" data-en="Contact Us" data-ar="تواصل معنا">Contact Us</a></li>
+            </ol>
+        </div>
+
+        <!-- 1. Information We Collect -->
+        <div class="policy-section" id="information-collected">
+            <h2><i class="fas fa-database"></i> <span data-en="1. Information We Collect" data-ar="1. المعلومات التي نجمعها">1. Information We Collect</span></h2>
+            <p data-en="When you visit our website or contact us, we may collect the following types of information:" data-ar="عندما تزور موقعنا الإلكتروني أو تتصل بنا، قد نجمع الأنواع التالية من المعلومات:">When you visit our website or contact us, we may collect the following types of information:</p>
+            <ul>
+                <li data-en="Personal identification information (name, email address, phone number)" data-ar="معلومات التعريف الشخصي (الاسم، عنوان البريد الإلكتروني، رقم الهاتف)">Personal identification information (name, email address, phone number)</li>
+                <li data-en="Project details and business requirements you share with us" data-ar="تفاصيل المشروع ومتطلبات العمل التي تشاركها معنا">Project details and business requirements you share with us</li>
+                <li data-en="Usage data such as pages visited, time spent on site, and browser type" data-ar="بيانات الاستخدام مثل الصفحات التي تمت زيارتها والوقت المستغرق في الموقع ونوع المتصفح">Usage data such as pages visited, time spent on site, and browser type</li>
+                <li data-en="Communication records when you contact us via email, WhatsApp, or our contact form" data-ar="سجلات الاتصالات عند التواصل معنا عبر البريد الإلكتروني أو واتساب أو نموذج الاتصال">Communication records when you contact us via email, WhatsApp, or our contact form</li>
+            </ul>
+        </div>
+
+        <!-- 2. How We Use Your Information -->
+        <div class="policy-section" id="how-we-use">
+            <h2><i class="fas fa-cogs"></i> <span data-en="2. How We Use Your Information" data-ar="2. كيف نستخدم معلوماتك">2. How We Use Your Information</span></h2>
+            <p data-en="We use the information we collect to:" data-ar="نستخدم المعلومات التي نجمعها من أجل:">We use the information we collect to:</p>
+            <ul>
+                <li data-en="Respond to your inquiries and provide quotations for our services" data-ar="الرد على استفساراتك وتقديم عروض أسعار لخدماتنا">Respond to your inquiries and provide quotations for our services</li>
+                <li data-en="Deliver and manage the services you have requested" data-ar="تقديم وإدارة الخدمات التي طلبتها">Deliver and manage the services you have requested</li>
+                <li data-en="Improve our website and the quality of our services" data-ar="تحسين موقعنا الإلكتروني وجودة خدماتنا">Improve our website and the quality of our services</li>
+                <li data-en="Send relevant updates, offers, or information you have opted in to receive" data-ar="إرسال التحديثات والعروض أو المعلومات ذات الصلة التي اخترت تلقيها">Send relevant updates, offers, or information you have opted in to receive</li>
+                <li data-en="Comply with applicable legal and regulatory obligations" data-ar="الامتثال للالتزامات القانونية والتنظيمية المعمول بها">Comply with applicable legal and regulatory obligations</li>
+            </ul>
+        </div>
+
+        <!-- 3. Information Sharing -->
+        <div class="policy-section" id="sharing">
+            <h2><i class="fas fa-share-alt"></i> <span data-en="3. Information Sharing" data-ar="3. مشاركة المعلومات">3. Information Sharing</span></h2>
+            <p data-en="We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:" data-ar="نحن لا نبيع أو نتاجر أو نؤجر معلوماتك الشخصية لأطراف ثالثة. قد نشارك معلوماتك فقط في الحالات التالية:">We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:</p>
+            <ul>
+                <li data-en="With trusted service providers who assist us in operating our website and conducting our business, subject to confidentiality agreements" data-ar="مع مزودي الخدمات الموثوقين الذين يساعدوننا في تشغيل موقعنا وإدارة أعمالنا، وفقاً لاتفاقيات السرية">With trusted service providers who assist us in operating our website and conducting our business, subject to confidentiality agreements</li>
+                <li data-en="When required by law, regulation, or legal process" data-ar="عند الاقتضاء بموجب القانون أو اللوائح أو الإجراءات القانونية">When required by law, regulation, or legal process</li>
+                <li data-en="To protect the rights, property, or safety of Cyber Pixel, our clients, or others" data-ar="لحماية حقوق أو ممتلكات أو سلامة سايبر بكسل أو عملائنا أو غيرهم">To protect the rights, property, or safety of Cyber Pixel, our clients, or others</li>
+            </ul>
+        </div>
+
+        <!-- 4. Cookies & Tracking -->
+        <div class="policy-section" id="cookies">
+            <h2><i class="fas fa-cookie-bite"></i> <span data-en="4. Cookies & Tracking" data-ar="4. ملفات تعريف الارتباط والتتبع">4. Cookies & Tracking</span></h2>
+            <p data-en="Our website may use cookies and similar tracking technologies to enhance your browsing experience. Cookies are small files stored on your device that help us:" data-ar="قد يستخدم موقعنا ملفات تعريف الارتباط وتقنيات التتبع المماثلة لتحسين تجربة التصفح. ملفات تعريف الارتباط هي ملفات صغيرة مخزنة على جهازك تساعدنا في:">Our website may use cookies and similar tracking technologies to enhance your browsing experience. Cookies are small files stored on your device that help us:</p>
+            <ul>
+                <li data-en="Remember your language preference (English or Arabic)" data-ar="تذكر تفضيل لغتك (الإنجليزية أو العربية)">Remember your language preference (English or Arabic)</li>
+                <li data-en="Understand how visitors interact with our site" data-ar="فهم كيفية تفاعل الزوار مع موقعنا">Understand how visitors interact with our site</li>
+                <li data-en="Improve the performance and relevance of our content" data-ar="تحسين أداء وملاءمة محتوانا">Improve the performance and relevance of our content</li>
+            </ul>
+            <div class="highlight-box">
+                <p data-en="You can control cookies through your browser settings. Disabling cookies may affect some features of our website." data-ar="يمكنك التحكم في ملفات تعريف الارتباط من خلال إعدادات المتصفح. قد يؤثر تعطيل ملفات تعريف الارتباط على بعض ميزات موقعنا.">You can control cookies through your browser settings. Disabling cookies may affect some features of our website.</p>
+            </div>
+        </div>
+
+        <!-- 5. Data Security -->
+        <div class="policy-section" id="security">
+            <h2><i class="fas fa-shield-alt"></i> <span data-en="5. Data Security" data-ar="5. أمان البيانات">5. Data Security</span></h2>
+            <p data-en="We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These measures include:" data-ar="نطبق تدابير أمنية تقنية وتنظيمية مناسبة لحماية معلوماتك الشخصية من الوصول أو التعديل أو الإفصاح أو الإتلاف غير المصرح به. تشمل هذه التدابير:">We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These measures include:</p>
+            <ul>
+                <li data-en="Secure HTTPS encryption for all data transmitted through our website" data-ar="تشفير HTTPS الآمن لجميع البيانات المنقولة عبر موقعنا">Secure HTTPS encryption for all data transmitted through our website</li>
+                <li data-en="Limited access to personal data on a need-to-know basis" data-ar="الوصول المحدود إلى البيانات الشخصية على أساس الحاجة إلى المعرفة">Limited access to personal data on a need-to-know basis</li>
+                <li data-en="Regular review of our data collection and storage practices" data-ar="المراجعة المنتظمة لممارسات جمع البيانات وتخزينها">Regular review of our data collection and storage practices</li>
+            </ul>
+            <p data-en="However, no method of transmission over the internet is 100% secure. While we strive to protect your information, we cannot guarantee absolute security." data-ar="ومع ذلك، لا توجد طريقة نقل عبر الإنترنت آمنة بنسبة 100%. بينما نسعى لحماية معلوماتك، لا يمكننا ضمان الأمان المطلق.">However, no method of transmission over the internet is 100% secure. While we strive to protect your information, we cannot guarantee absolute security.</p>
+        </div>
+
+        <!-- 6. Third-Party Links -->
+        <div class="policy-section" id="third-party">
+            <h2><i class="fas fa-external-link-alt"></i> <span data-en="6. Third-Party Links" data-ar="6. روابط الطرف الثالث">6. Third-Party Links</span></h2>
+            <p data-en="Our website may contain links to third-party websites, including our portfolio clients' websites and app store listings. These sites have their own privacy policies, and we have no responsibility or liability for their content or activities." data-ar="قد يحتوي موقعنا على روابط لمواقع إلكترونية تابعة لجهات خارجية، بما في ذلك مواقع عملاء محفظتنا وقوائم متاجر التطبيقات. هذه المواقع لها سياسات الخصوصية الخاصة بها، ونحن لا نتحمل أي مسؤولية عن محتواها أو أنشطتها.">Our website may contain links to third-party websites, including our portfolio clients' websites and app store listings. These sites have their own privacy policies, and we have no responsibility or liability for their content or activities.</p>
+        </div>
+
+        <!-- 7. Your Rights -->
+        <div class="policy-section" id="your-rights">
+            <h2><i class="fas fa-user-shield"></i> <span data-en="7. Your Rights" data-ar="7. حقوقك">7. Your Rights</span></h2>
+            <p data-en="You have the right to:" data-ar="لديك الحق في:">You have the right to:</p>
+            <ul>
+                <li data-en="Access the personal information we hold about you" data-ar="الوصول إلى المعلومات الشخصية التي نحتفظ بها عنك">Access the personal information we hold about you</li>
+                <li data-en="Request correction of inaccurate or incomplete information" data-ar="طلب تصحيح المعلومات غير الدقيقة أو غير المكتملة">Request correction of inaccurate or incomplete information</li>
+                <li data-en="Request deletion of your personal data, subject to legal obligations" data-ar="طلب حذف بياناتك الشخصية، وفقاً للالتزامات القانونية">Request deletion of your personal data, subject to legal obligations</li>
+                <li data-en="Opt out of receiving marketing communications at any time" data-ar="إلغاء الاشتراك في تلقي الاتصالات التسويقية في أي وقت">Opt out of receiving marketing communications at any time</li>
+            </ul>
+            <p data-en="To exercise any of these rights, please contact us using the details in the Contact section below." data-ar="لممارسة أي من هذه الحقوق، يرجى التواصل معنا باستخدام التفاصيل الواردة في قسم الاتصال أدناه.">To exercise any of these rights, please contact us using the details in the Contact section below.</p>
+        </div>
+
+        <!-- 8. Children's Privacy -->
+        <div class="policy-section" id="children">
+            <h2><i class="fas fa-child"></i> <span data-en="8. Children's Privacy" data-ar="8. خصوصية الأطفال">8. Children's Privacy</span></h2>
+            <p data-en="Our website and services are not directed at children under the age of 13. We do not knowingly collect personal information from children. If you believe we have inadvertently collected information from a child, please contact us immediately." data-ar="موقعنا وخدماتنا غير موجهة للأطفال دون سن 13 عاماً. نحن لا نجمع عن قصد معلومات شخصية من الأطفال. إذا كنت تعتقد أننا جمعنا عن غير قصد معلومات من طفل، يرجى التواصل معنا على الفور.">Our website and services are not directed at children under the age of 13. We do not knowingly collect personal information from children. If you believe we have inadvertently collected information from a child, please contact us immediately.</p>
+        </div>
+
+        <!-- 9. Policy Changes -->
+        <div class="policy-section" id="changes">
+            <h2><i class="fas fa-sync-alt"></i> <span data-en="9. Policy Changes" data-ar="9. تغييرات السياسة">9. Policy Changes</span></h2>
+            <p data-en="We may update this Privacy Policy from time to time. When we make changes, we will update the 'Last updated' date at the top of this page. We encourage you to review this policy periodically to stay informed about how we protect your information." data-ar="قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. عند إجراء تغييرات، سنقوم بتحديث تاريخ 'آخر تحديث' في أعلى هذه الصفحة. نشجعك على مراجعة هذه السياسة بشكل دوري للبقاء على اطلاع حول كيفية حماية معلوماتك.">We may update this Privacy Policy from time to time. When we make changes, we will update the 'Last updated' date at the top of this page. We encourage you to review this policy periodically to stay informed about how we protect your information.</p>
+        </div>
+
+        <!-- 10. Contact Us -->
+        <div class="policy-section" id="contact">
+            <h2><i class="fas fa-envelope"></i> <span data-en="10. Contact Us" data-ar="10. تواصل معنا">10. Contact Us</span></h2>
+            <p data-en="If you have any questions, concerns, or requests regarding this Privacy Policy or the handling of your personal data, please contact us:" data-ar="إذا كان لديك أي أسئلة أو مخاوف أو طلبات تتعلق بسياسة الخصوصية هذه أو التعامل مع بياناتك الشخصية، يرجى التواصل معنا:">If you have any questions, concerns, or requests regarding this Privacy Policy or the handling of your personal data, please contact us:</p>
+            <div class="highlight-box">
+                <p><strong>Cyber Pixel</strong><br>
+                <span data-en="Business Bay, Dubai, UAE" data-ar="بزنس باي، دبي، الإمارات العربية المتحدة">Business Bay, Dubai, UAE</span><br>
+                <a href="mailto:info@cyberpixel.ae">info@cyberpixel.ae</a><br>
+                <a href="tel:+971555669771">+971 55 566 9771</a></p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo-container">
+                <img src="Cyber_Pixel_Logo-removebg-preview.png" alt="Cyber Pixel" class="footer-logo">
+                <span class="footer-logo-text">Cyber Pixel</span>
+            </div>
+            <p class="footer-text" data-en="© 2026 Cyber Pixel. All rights reserved. | Digital Excellence Since 2015" data-ar="© 2026 سايبر بكسل. جميع الحقوق محفوظة. | التميز الرقمي منذ 2015">© 2026 Cyber Pixel. All rights reserved. | Digital Excellence Since 2015</p>
+            <div class="footer-social">
+                <a href="https://wa.me/971555669771" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:info@cyberpixel.ae" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://share.google/bRNfQqOa51Zbwf74o" target="_blank" aria-label="Location"><i class="fas fa-map-marker-alt"></i></a>
+                <a href="tel:+971555669771" aria-label="Phone"><i class="fas fa-phone"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Switching
+        const langToggle = document.getElementById('langToggle');
+        let currentLang = 'en';
+
+        langToggle.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            document.body.classList.toggle('rtl', currentLang === 'ar');
+            langToggle.textContent = currentLang === 'en' ? 'العربية' : 'English';
+
+            document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+                const text = currentLang === 'en' ? el.dataset.en : el.dataset.ar;
+                if (text) el.textContent = text;
+            });
+
+            localStorage.setItem('cyberpixel-lang', currentLang);
+        });
+
+        const savedLang = localStorage.getItem('cyberpixel-lang');
+        if (savedLang === 'ar') {
+            langToggle.click();
+        }
+    </script>
+</body>
+</html>
