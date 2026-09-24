@@ -76,7 +76,7 @@
   <script>
     window.fbAsyncInit = function() {
       FB.init({
-        appId      : '1656979858817301', // Replace with your Meta App ID from Watsin
+        appId      : '1656979858817301', // Watsin App ID
         cookie     : true,
         xfbml      : true,
         version    : 'v18.0'
@@ -92,6 +92,10 @@
      }(document, 'script', 'facebook-jssdk'));
 
     function launchWhatsAppSignup() {
+      if (typeof FB === 'undefined') {
+        alert('Facebook SDK is still loading or blocked. Please refresh.');
+        return;
+      }
       FB.login(function(response) {
         const resultBox = document.getElementById('result');
         resultBox.style.display = 'block';
@@ -101,11 +105,11 @@
           resultBox.innerHTML = '<strong>Success! Authorization Code:</strong><br>' + authCode;
           console.log('Authorization Code:', authCode);
         } else {
-          resultBox.innerHTML = '<span style="color:red;">Signup cancelled or failed. Check console for details.</span>';
+          resultBox.innerHTML = '<span style="color:red;">Signup cancelled or failed. Check console (F12) for details.</span>';
           console.log('User cancelled login or did not fully authorize.');
         }
       }, {
-        config_id: '29392617290339531',
+        config_id: '29392617290339531', // WABA Configuration ID
         response_type: 'code',
         override_default_response_type: true
       });
