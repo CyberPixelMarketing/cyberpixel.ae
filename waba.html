@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Embedded Signup Test</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+    }
+    h2 {
+      margin-top: 0;
+      color: #1c1e21;
+    }
+    p {
+      color: #606770;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .btn-connect {
+      background-color: #1877f2;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      width: 100%;
+      margin-top: 20px;
+    }
+    .btn-connect:hover {
+      background-color: #166fe5;
+    }
+    .output {
+      margin-top: 20px;
+      padding: 12px;
+      background: #f7f8fa;
+      border: 1px solid #dddfe2;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 12px;
+      word-break: break-all;
+      text-align: left;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Connect WhatsApp Number</h2>
+    <p>Click the button below to trigger Meta's Embedded Signup popup and link a new WhatsApp business number under your Tech Partner config.</p>
+    
+    <button class="btn-connect" onclick="launchWhatsAppSignup()">Connect WhatsApp</button>
+
+    <div id="result" class="output"></div>
+  </div>
+
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : 'YOUR_META_APP_ID', // Replace with your Meta App ID from Watsin
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v18.0'
+      });
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+
+    function launchWhatsAppSignup() {
+      FB.login(function(response) {
+        const resultBox = document.getElementById('result');
+        resultBox.style.display = 'block';
+
+        if (response.authResponse) {
+          const authCode = response.authResponse.code;
+          resultBox.innerHTML = '<strong>Success! Authorization Code:</strong><br>' + authCode;
+          console.log('Authorization Code:', authCode);
+        } else {
+          resultBox.innerHTML = '<span style="color:red;">Signup cancelled or failed. Check console for details.</span>';
+          console.log('User cancelled login or did not fully authorize.');
+        }
+      }, {
+        config_id: '29392617290339531',
+        response_type: 'code',
+        override_default_response_type: true
+      });
+    }
+  </script>
+
+</body>
+</html>
